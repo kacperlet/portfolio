@@ -1,0 +1,46 @@
+@keyframes fadein {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+}
+
+@keyframes fromright {
+    from {
+        transform: translateX(100%);
+        opacity: 0%;
+    }
+    to {
+        transform: translateX(0px);
+        opacity: 100%;
+    }
+}
+
+@keyframes frombelow {
+    from {
+        transform: translateY(100%);
+        opacity: 0%;
+    }
+    to {
+        transform: translateY(0px);
+        opacity: 100%;
+    }
+}
+
+@keyframes textclip-fromright {
+    from {
+        transform: translateX(100%);
+        width: 0%;
+    }
+    to {
+        transform: translateX(0px);
+        width: 100%;
+    }
+}
+
+@keyframes textclip {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}

@@ -1,0 +1,21 @@
+nav {
+    width: 100%;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    margin-top: 20px;
+    z-index: 1;
+}
+
+nav > div {
+    display: flex;
+    justify-content: space-around;
+    gap: 80px;
+    background: rgb(24,24,24);
+    border-radius: 30px;
+}
+
+nav > div > a {
+    border-radius: 30px;
+    background: rgb(30,30,30);
+}
