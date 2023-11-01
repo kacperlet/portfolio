@@ -3,6 +3,10 @@
     to {opacity: 100%;}
 }
 
+.fadein {
+    opacity: 0%;
+}
+
 @keyframes fromright {
     from {
         transform: translateX(100%);
@@ -14,6 +18,25 @@
     }
 }
 
+.fromright {
+    opacity: 0%;
+}
+
+@keyframes fromleft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0%;
+    }
+    to {
+        transform: translateX(0px);
+        opacity: 100%;
+    }
+}
+
+.fromleft {
+    opacity: 0%;
+}
+
 @keyframes frombelow {
     from {
         transform: translateY(100%);
@@ -23,6 +46,10 @@
         transform: translateY(0px);
         opacity: 100%;
     }
+}
+
+.frombelow {
+    opacity: 0%;
 }
 
 @keyframes textclip-fromright {

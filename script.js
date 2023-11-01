@@ -27,15 +27,16 @@ glitchEffect(document.getElementById("name"), 80)
 const elements = document.querySelectorAll("h1")
 for (let e of elements) {
     new IntersectionObserver(entries => {
-        glitchEffect(e, 50)
+        glitchEffect(e, 100)
     }).observe(e)
 }
 
 
 const hiddenTexts = [["COMPUTER-SCIENCE-STUDENT", 88], ["NEW-YORKER", 252], ["POLISH", 300], ["PROGRAMMER", 455], ["PERSISTANT", 5], ["COLLABORATIVE", 170]]
 
-function matrixEffect() {
-    const effect = document.getElementById("effect");
+function desktopEffect() {
+    const effect = document.getElementById("effectDesktop");
+    effect.style += "display:flex;"
     let hover = false;
 
     effect.onmouseover = event => {
@@ -67,7 +68,49 @@ function matrixEffect() {
         effect.innerHTML = output.join(" ");
     }, 50)
 }
-matrixEffect();
+
+const descriptors = ["A COMPUTER SCIENCE STUDENT", "A NEW YORKER", "POLISH", "A PROGRAMMER", "PERSISTANT", "COLLABORATIVE", "RELIABLE"]
+
+
+function mobileEffect() {
+    const effect = document.getElementById("effectMobile");
+    effect.style += "display:flex;"
+
+    iterations = 0;
+    forward = true;
+    phraseIndex = 0;
+    let interval = setInterval(() => {
+        output = []
+        for (i = 0; i < descriptors[phraseIndex].length; i++) {
+            if (i < iterations) {
+                output.push(descriptors[phraseIndex][i])
+            }
+        }
+
+        effect.innerHTML = `<h2>I AM ${output.join("")}</h2>`;
+
+        if (iterations > descriptors[phraseIndex].length + 15) {
+            forward = false;
+        }
+        else if (iterations < -5) {
+            forward = true;
+            phraseIndex++;
+            if (phraseIndex >= descriptors.length) {phraseIndex = 0}
+        }
+
+        if (forward) {iterations++;}
+        else {iterations--;}
+        
+    }, 50)
+}
+
+
+if (screen.width >= 600) {
+    desktopEffect();
+}
+else {
+    mobileEffect()
+}
 
 
 // Projects
@@ -110,17 +153,17 @@ const projectsPage = document.getElementById("projects")
 function showProject(project) {
 
     element = `
-    <div class="project">
+    <div class="project fadein">
         <div class="info">
             <div>
-                <h2>${project["name"]}</h2>
-                <a href="${project["link"]}">${project["link"]}</a>
+                <h2 class="textclip">${project["name"]}</h2>
+                <a class="frombelow" href="${project["link"]}">${project["link"]}</a>
             </div>
-            <div class="text">
+            <div class="text frombelow">
                 ${project["text"]}
             </div>
         </div>
-        <div class="thumbnail">
+        <div class="thumbnail fromright">
             <img src="${project["thumbnail"]}">
         </div>
     </div>
@@ -130,4 +173,55 @@ function showProject(project) {
 
 for (let p of projects) {
     showProject(p)
+}
+
+// Play CSS animations
+const options = {
+    root: null,
+    threshold: 0.3,
+    rootMargin: "0px",
+  }
+for (let e of document.querySelectorAll(".frombelow")) {
+    new IntersectionObserver(entries => {
+        console.log(entries[0].isIntersecting)
+        if (entries[0].isIntersecting){
+            e.style.animation = "frombelow 1s ease 0s 1 normal both"
+        }
+    }, options).observe(e)
+}
+
+for (let e of document.querySelectorAll(".fromleft")) {
+    new IntersectionObserver(entries => {
+        console.log(entries[0].isIntersecting)
+        if (entries[0].isIntersecting){
+            e.style.animation = "fromleft 1.2s ease 0s 1 normal both"
+        }
+    }, options).observe(e)
+}
+
+for (let e of document.querySelectorAll(".fromright")) {
+    new IntersectionObserver(entries => {
+        console.log(entries[0].isIntersecting)
+        if (entries[0].isIntersecting){
+            e.style.animation = "fromright 1.2s ease 0s 1 normal both"
+        }
+    }, options).observe(e)
+}
+
+for (let e of document.querySelectorAll(".fadein")) {
+    new IntersectionObserver(entries => {
+        console.log(entries[0].isIntersecting)
+        if (entries[0].isIntersecting){
+            e.style.animation = "fadein 1.2s ease 0s 1 normal both"
+        }
+    }, options).observe(e)
+}
+
+for (let e of document.querySelectorAll(".textclip")) {
+    new IntersectionObserver(entries => {
+        console.log(entries[0].isIntersecting)
+        if (entries[0].isIntersecting){
+            e.style.animation = "textclip 1.5s ease 0.3s 1 normal both"
+        }
+    }, options).observe(e)
 }
