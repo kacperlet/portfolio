@@ -117,6 +117,7 @@ else {
 const projects = [
     {
         "name": "AI Character Generator",
+        "id": "aiCharGen",
         "link": "https://github.com/PaulShiLi/rpgGenerate-SpaceInvaders",
         "thumbnail": "images/character-gen/home.png",
         "text": `<p>Over the summer of '22, I worked with a team of 5 others to train natural language processing AI models to make an RPG character generator. The generator would be split up to three different AI models: Backstory, Personality, and Physical Descriptions. In addition to this, we only had two weeks to do it.</p>
@@ -127,6 +128,7 @@ const projects = [
     },
     {
         "name": "3D Engine in Java",
+        "id": "3DEngine",
         "link": "https://github.com/kacperlet/3D-Engine-Java",
         "thumbnail": "images/3D-engine/cylinder.png",
         "text": `<p>As a challenging side-project, I attempted to create my own 3D engine with Java and it's built in 2D graphics library.</p>
@@ -138,6 +140,7 @@ const projects = [
     },
     {
         "name": "Lightsaber CSS",
+        "id": "lightsaberCSS",
         "link": "https://github.com/kacperlet/lightsaber",
         "thumbnail": "images/lightsaber/two.png",
         "text": `<p>After becoming more adept at web development and using CSS I decided to test my CSS skills by creating a ligthsaber with pure CSS. No images were used at all.</p>
@@ -150,10 +153,10 @@ const projects = [
 ]
 
 const projectsPage = document.getElementById("projects")
-function showProject(project) {
+function createProject(project) {
 
     element = `
-    <div class="project fadein">
+    <div class="project fadein" id="${project["id"]}" onclick="expandProject('${project["id"]}')">
         <div class="info">
             <div>
                 <h2 class="textclip">${project["name"]}</h2>
@@ -172,7 +175,13 @@ function showProject(project) {
 }
 
 for (let p of projects) {
-    showProject(p)
+    createProject(p)
+}
+
+// TODO: work on
+function expandProject(projectID) {
+    let proj = document.getElementById(projectID)
+    //proj.style.height = "100%";
 }
 
 // Play CSS animations

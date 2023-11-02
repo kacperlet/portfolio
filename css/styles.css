@@ -253,6 +253,11 @@ p {
     #webdev > .skill {
         transform: translate(50px, -40px);
     }
+
+    .right {
+        display: flex;
+        flex-direction: row-reverse;
+    }
 }
 
 /*Projects*/
