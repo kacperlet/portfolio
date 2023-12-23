@@ -147,7 +147,8 @@ const projects = [
 
         <p>In less than two days I was able to create a ligthsaber with customizable colors, a retractable blade, a way to swing it using JavaScript, and audio cues for when you do swing it.</p>
         
-        <p>You can access a live demo of it below.</p>
+        <p>You can access a live demo of it here: <a>https://kacperlet.github.io/lightsaber/</a></p>
+        
         `
     }
 ]
@@ -156,7 +157,7 @@ const projectsPage = document.getElementById("projects")
 function createProject(project) {
 
     element = `
-    <div class="project fadein" id="${project["id"]}" onclick="expandProject('${project["id"]}')">
+    <div class="project fadein minimized" id="${project["id"]}" onclick="expandProject('${project["id"]}')">
         <div class="info">
             <div>
                 <h2 class="textclip">${project["name"]}</h2>
@@ -181,7 +182,13 @@ for (let p of projects) {
 // TODO: work on
 function expandProject(projectID) {
     let proj = document.getElementById(projectID)
-    //proj.style.height = "100%";
+    if (proj.classList.contains("maximized")) {
+        proj.classList.replace("maximized", "minimized")
+    }
+    else {
+        proj.classList.replace("minimized", "maximized")
+    }
+
 }
 
 // Play CSS animations
