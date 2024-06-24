@@ -32,7 +32,7 @@ for (let e of elements) {
 }
 
 
-const hiddenTexts = [["COMPUTER-SCIENCE-STUDENT", 88], ["NEW-YORKER", 252], ["POLISH", 300], ["PROGRAMMER", 455], ["PERSISTANT", 5], ["COLLABORATIVE", 170]]
+const hiddenTexts = [["COMPUTER-SCIENCE-STUDENT", 88], ["NEW-YORKER", 252], ["POLISH", 300], ["PROGRAMMER", 455], ["PERSISTENT", 5], ["COLLABORATIVE", 170]]
 
 function desktopEffect() {
     const effect = document.getElementById("effectDesktop");
